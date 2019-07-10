@@ -3,6 +3,7 @@ using MarsRover.Domain.Interfaces;
 using System;
 using FluentAssertions;
 using Xunit;
+using MarsRover.Domain.Exceptions;
 
 namespace MarsRover.Service.Test
 {
@@ -66,7 +67,7 @@ namespace MarsRover.Service.Test
             var action = new Action(() => _roverService.DrawPlateau(plataeu));
 
             // Assert
-            action.Should().Throw<IndexOutOfRangeException>();
+            action.Should().Throw<CannotCreateAreaException>();
 
         }
     }

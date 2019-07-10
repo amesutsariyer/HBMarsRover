@@ -1,5 +1,6 @@
 ﻿using System;
 using MarsRover.Domain.Common;
+using MarsRover.Domain.Exceptions;
 using MarsRover.Domain.Interfaces;
 
 namespace MarsRover.Service
@@ -20,7 +21,7 @@ namespace MarsRover.Service
         {
             if (plataeu.Width == 0 || plataeu.Height == 0)
             {
-                throw new IndexOutOfRangeException();
+                throw new CannotCreateAreaException();
             }
         }
     }
