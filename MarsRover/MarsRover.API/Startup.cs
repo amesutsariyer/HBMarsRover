@@ -15,20 +15,35 @@ namespace MarsRover.API
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+
+        public IConfigurationRoot Configuration { get; }
+        public IConfiguration ConfigurationPublic { get; set; }
+        private readonly IHostingEnvironment _env;
+
+        public Startup(IHostingEnvironment environment)
         {
-            // Init Serilog configuration
-            Log.Logger = new LoggerConfiguration().ReadFrom.Configuration(configuration).CreateLogger();
-            Configuration = configuration;
+            _env = environment;
+
+            Configuration = new ConfigurationBuilder()
+                .SetBasePath(environment.ContentRootPath)
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{environment.EnvironmentName}.json", optional: true)
+                .AddEnvironmentVariables()
+                .Build();
+
+            Log.Logger = new LoggerConfiguration()
+                .ReadFrom.Configuration(Configuration)
+                .CreateLogger();
+
+            ConfigurationPublic = Configuration;
         }
 
-        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services, ILoggerFactory loggerFactory)
+        public void ConfigureServices(IServiceCollection services)
         {
             // logging
-            loggerFactory.AddSerilog();
+            services.AddLogging(loggingBuilder => loggingBuilder.AddSerilog(dispose: true));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
