@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MarsRover.Domain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -12,9 +13,11 @@ namespace MarsRover.API.Controllers
     public class RoverController : BaseController
     {
         private readonly ILogger<RoverController> _logger;
-        public RoverController(ILogger<RoverController> logger) : base(logger)
+        private readonly IRoverService _roverService;
+        public RoverController(ILogger<RoverController> logger, IRoverService roverService) : base(logger)
         {
             _logger = logger;
+            _roverService = roverService;
         }
 
         // GET api/values
@@ -22,32 +25,10 @@ namespace MarsRover.API.Controllers
         public ActionResult<IEnumerable<string>> Get()
         {
             _logger.LogInformation("test");
+      
             return new string[] { "value1", "value2" };
         }
 
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/values
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+      
     }
 }

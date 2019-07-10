@@ -5,13 +5,15 @@ VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{36001620-1CB0-4B98-B090-C50DFFFE6023}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarsRover.API.Test", "MarsRover.API.Test\MarsRover.API.Test.csproj", "{CBD1595C-7AC5-4940-9E09-02763F2D7188}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarsRover.API.Test", "MarsRover.API.Test\MarsRover.API.Test.csproj", "{CBD1595C-7AC5-4940-9E09-02763F2D7188}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarsRover.API", "MarsRover.API\MarsRover.API.csproj", "{C03038CD-A187-4C41-B1F1-56A2B300D0B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarsRover.API", "MarsRover.API\MarsRover.API.csproj", "{C03038CD-A187-4C41-B1F1-56A2B300D0B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarsRover.Service", "MarsRover.Service\MarsRover.Service.csproj", "{0A5C8CEC-01D9-4CC3-ABE5-8C55DD8E989D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarsRover.Service", "MarsRover.Service\MarsRover.Service.csproj", "{0A5C8CEC-01D9-4CC3-ABE5-8C55DD8E989D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarsRover.Service.Test", "MarsRover.Service.Test\MarsRover.Service.Test.csproj", "{6BC5AC61-0BC9-4E94-9452-35FBFC3A0899}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarsRover.Service.Test", "MarsRover.Service.Test\MarsRover.Service.Test.csproj", "{6BC5AC61-0BC9-4E94-9452-35FBFC3A0899}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarsRover.Domain", "MarsRover.Domain\MarsRover.Domain.csproj", "{495C9216-36F3-4D5E-BECB-4C436E993E48}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +37,10 @@ Global
 		{6BC5AC61-0BC9-4E94-9452-35FBFC3A0899}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6BC5AC61-0BC9-4E94-9452-35FBFC3A0899}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6BC5AC61-0BC9-4E94-9452-35FBFC3A0899}.Release|Any CPU.Build.0 = Release|Any CPU
+		{495C9216-36F3-4D5E-BECB-4C436E993E48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{495C9216-36F3-4D5E-BECB-4C436E993E48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{495C9216-36F3-4D5E-BECB-4C436E993E48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{495C9216-36F3-4D5E-BECB-4C436E993E48}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
