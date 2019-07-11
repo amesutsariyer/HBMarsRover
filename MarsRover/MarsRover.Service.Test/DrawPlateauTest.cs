@@ -1,5 +1,4 @@
 using MarsRover.Domain.Common;
-using MarsRover.Domain.Interfaces;
 using System;
 using FluentAssertions;
 using Xunit;
@@ -7,32 +6,20 @@ using MarsRover.Domain.Exceptions;
 
 namespace MarsRover.Service.Test
 {
-    public class RoverServiceTest
+    public class DrawPlateauTest
     {
         private readonly RoverService _roverService;
-        public RoverServiceTest()
+        public DrawPlateauTest()
         {
             _roverService = new RoverService();
         }
-        //[Fact]
-        //public object CalculateRoverMovement()
-        //{
-        //    throw new NotImplementedException();
-        //}
-        //[Fact]
-
-        //public void DeployRover()
-        //{
-        //    throw new NotImplementedException();
-        //}
 
         [Theory]
         [InlineData("5 5")]
         [InlineData("2 2")]
         [InlineData("10 3")]
         [InlineData("5 7")]
-
-        public void DrawPlateauTest(string plataeuParameter)
+        public void DrawPlateauTest_CorrectParams(string plataeuParameter)
         {
             // Arrange
             var plataeuParameterSplit = plataeuParameter.Split(' ');
@@ -40,12 +27,11 @@ namespace MarsRover.Service.Test
             var height = int.Parse(plataeuParameterSplit[1]);
 
             // Act
-            var plataeu = new Plataeu(width, height);
+            var plataeu = new Plateau(width, height);
 
             //Assert
             Assert.Equal(plataeu.Width, width);
             Assert.Equal(plataeu.Height, height);
-
         }
 
         [Theory]
@@ -62,8 +48,7 @@ namespace MarsRover.Service.Test
             var height = int.Parse(plataeuParameterSplit[1]);
 
             // Act
-            var plataeu = new Plataeu(width, height);
-
+            var plataeu = new Plateau(width, height);
             var action = new Action(() => _roverService.DrawPlateau(plataeu));
 
             // Assert

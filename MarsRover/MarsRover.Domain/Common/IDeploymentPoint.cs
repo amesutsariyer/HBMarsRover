@@ -6,7 +6,9 @@ namespace MarsRover.Domain.Common
     {
         int X { get; set; }
         int Y { get; set; }
-        Direction Direction { get; set; }
+        string NavigatedDirection { get; }
+        Direction Direction { get; }
+        Direction SetDirection(string navigatedDirection);
     }
 
 

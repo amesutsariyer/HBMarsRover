@@ -4,7 +4,7 @@ namespace MarsRover.Domain.Common
 {
     public interface IMovement
     {
-        List<Movement> MovementList { get; set; }
+        List<Enum.MovingAbility> MovementList { get; set; }
     }
 
 

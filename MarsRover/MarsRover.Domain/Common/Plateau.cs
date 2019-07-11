@@ -1,8 +1,8 @@
 ﻿namespace MarsRover.Domain.Common
 {
-    public class Plataeu : Base,IPlataeuSize
+    public class Plateau : Base,IPlataeuSize
     {
-        public Plataeu(int width, int height)
+        public Plateau(int width, int height)
         {
             Width = width;
             Height = height;
