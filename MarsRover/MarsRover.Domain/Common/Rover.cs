@@ -10,7 +10,6 @@ namespace MarsRover.Domain.Common
         {
             Movement = new Movement( );
         }
-        public Plateau Plateau { get; set; }
         public DeploymentPoint DeploymentPoint { get; set; }
         public Movement Movement { get; set; }
 

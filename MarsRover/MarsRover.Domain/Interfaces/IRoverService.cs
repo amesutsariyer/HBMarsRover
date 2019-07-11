@@ -4,9 +4,9 @@ namespace MarsRover.Domain.Interfaces
 {
     public interface IRoverService
     {
-        void DrawPlateau(Plateau plateau);
+        Plateau DrawPlateau(Plateau plateau);
         Rover SetRoverOnPlateau(Plateau plateau, DeploymentPoint deploymentPoint);
-        object CalculateRoverMovement(Rover rover);
+        Rover CalculateRoverMovement(Rover rover, Plateau plateau);
 
     }
 }

@@ -8,28 +8,29 @@ namespace MarsRover.Service
 {
     public class RoverService : BaseService, IRoverService
     {
-        public object CalculateRoverMovement(Rover rover)
+        public Rover CalculateRoverMovement(Rover rover, Plateau plateau)
         {
             if (rover == null)
                 throw new ArgumentNullException();
-            return Move(rover);
+            return Move(rover, plateau);
         }
 
-     
 
-        public void DrawPlateau(Plateau plateau)
+
+        public Plateau DrawPlateau(Plateau plateau)
         {
             if (plateau.Width == 0 || plateau.Height == 0)
             {
                 throw new CannotCreateAreaException();
             }
+            return plateau;
         }
 
         public Rover SetRoverOnPlateau(Plateau plateau, DeploymentPoint deploymentPoint)
         {
             CheckDeploymentPointIsValid(plateau, deploymentPoint);
             CheckDirectionIsValid(deploymentPoint.Direction);
-            return new Rover() { DeploymentPoint = deploymentPoint, Plateau = plateau };
+            return new Rover() { DeploymentPoint = deploymentPoint };
         }
 
 
@@ -62,7 +63,7 @@ namespace MarsRover.Service
                 throw new OutOfBoundsFromPlateauException();
 
         }
-        private Rover Move(Rover rover)
+        private Rover Move(Rover rover, Plateau plateau)
         {
             foreach (var movingDirection in rover.Movement.MovementList)
             {
@@ -75,7 +76,7 @@ namespace MarsRover.Service
                         TurnRight(rover);
                         break;
                     case MovingAbility.M:
-                        GoStraight(rover);
+                        GoStraight(rover, plateau);
                         break;
                     default:
                         throw new InvalidMovingAbilityParamException();
@@ -85,27 +86,27 @@ namespace MarsRover.Service
             return rover;
         }
 
-        private void GoStraight(Rover rover)
+        private void GoStraight(Rover rover, Plateau plateau)
         {
             switch (rover.DeploymentPoint.Direction)
             {
                 case Direction.N:
-                    if (rover.DeploymentPoint.Y + 1 <= rover.Plateau.Height)
+                    if (rover.DeploymentPoint.Y + 1 <= plateau.Height)
                         rover.DeploymentPoint.Y += 1;
                     break;
 
                 case Direction.E:
-                    if (rover.DeploymentPoint.X + 1 <= rover.Plateau.Width)
+                    if (rover.DeploymentPoint.X + 1 <= plateau.Width)
                         rover.DeploymentPoint.X += 1;
                     break;
 
                 case Direction.S:
-                    if (rover.DeploymentPoint.Y - 1 <= rover.Plateau.Height)
+                    if (rover.DeploymentPoint.Y - 1 <= plateau.Height)
                         rover.DeploymentPoint.Y -= 1;
                     break;
 
                 case Direction.W:
-                    if (rover.DeploymentPoint.X - 1 <= rover.Plateau.Width)
+                    if (rover.DeploymentPoint.X - 1 <= plateau.Width)
                         rover.DeploymentPoint.X -= 1;
                     break;
                 default:

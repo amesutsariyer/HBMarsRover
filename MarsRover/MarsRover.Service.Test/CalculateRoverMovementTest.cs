@@ -37,7 +37,7 @@ namespace MarsRover.Service.Test
             rover.Movement.MovementList = movements;
 
             //Assert
-            rover.Plateau.Should().NotBeNull();
+            plataue.Should().NotBeNull();
             rover.Movement.MovementList.Should().NotBeNull();
             rover.DeploymentPoint.X.Should().Be(3);
             rover.DeploymentPoint.Y.Should().Be(3);
@@ -63,10 +63,10 @@ namespace MarsRover.Service.Test
                       .ToList();
 
             rover.Movement.MovementList = movements;
-            _roverService.CalculateRoverMovement(rover);
+            _roverService.CalculateRoverMovement(rover, plataue);
 
             //Assert
-            rover.Plateau.Should().NotBeNull();
+            plataue.Should().NotBeNull();
             rover.Movement.MovementList.Should().NotBeNull();
             rover.DeploymentPoint.X.Should().Be(1);
             rover.DeploymentPoint.Y.Should().Be(3);
@@ -92,10 +92,10 @@ namespace MarsRover.Service.Test
                       .ToList();
 
             rover.Movement.MovementList = movements;
-            _roverService.CalculateRoverMovement(rover);
+            _roverService.CalculateRoverMovement(rover, plataue);
 
             //Assert
-            rover.Plateau.Should().NotBeNull();
+            plataue.Should().NotBeNull();
             rover.Movement.MovementList.Should().NotBeNull();
             rover.DeploymentPoint.X.Should().Be(5);
             rover.DeploymentPoint.Y.Should().Be(1);
@@ -122,10 +122,10 @@ namespace MarsRover.Service.Test
                       .ToList();
 
             rover.Movement.MovementList = movements;
-            var result = _roverService.CalculateRoverMovement(rover);
+            var result = _roverService.CalculateRoverMovement(rover, plataue);
 
             //Assert
-            rover.Plateau.Should().NotBeNull();
+            plataue.Should().NotBeNull();
             rover.Movement.MovementList.Should().NotBeNull();
             rover.DeploymentPoint.X.Should().Be(5);
             rover.DeploymentPoint.Y.Should().Be(5);
